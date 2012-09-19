@@ -7,3 +7,6 @@ Things that I do not like about it (smells):
   TransactionHistory - I don't think I modelled this correctly
 - I'm not entirely sure that transfer() uses good encapsulation
 - I'm tired
+
+Things that I should probably do:
+- Actual error checking for negative balances
