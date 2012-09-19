@@ -9,8 +9,6 @@ import bank.transaction.record.WithdrawalRecord;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.System.out;
-
 public class TransactionHistory {
   private List<TransactionRecord> records;
 
@@ -31,13 +29,13 @@ public class TransactionHistory {
   }
 
   public void print(TransactionRecordFilter filter, StringBuffer buffer) {
-    for(TransactionRecord record: records) {
+    for (TransactionRecord record : records) {
       conditionallyAddToBuffer(filter, buffer, record);
     }
   }
 
   private void conditionallyAddToBuffer(TransactionRecordFilter filter, StringBuffer buffer, TransactionRecord record) {
-    if(filter.allows(record)) {
+    if (filter.allows(record)) {
       buffer.append(record);
     }
   }

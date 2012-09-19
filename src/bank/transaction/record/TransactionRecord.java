@@ -2,7 +2,6 @@ package bank.transaction.record;
 
 import bank.transaction.TransactionAmounts;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

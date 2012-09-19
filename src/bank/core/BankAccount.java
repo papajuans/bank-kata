@@ -50,7 +50,7 @@ public class BankAccount {
     transactionHistory.print(new WithdrawalRecordFilter(), buffer);
   }
 
-  public void printDateRange(Date start, Date end,StringBuffer buffer) {
+  public void printDateRange(Date start, Date end, StringBuffer buffer) {
     transactionHistory.print(new DateRangeRecordFilter(start, end), buffer);
   }
 }

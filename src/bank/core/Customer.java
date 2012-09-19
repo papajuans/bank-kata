@@ -39,9 +39,9 @@ public class Customer {
     return bankAccount.currentBalance();
   }
 
-  //Todo one-dot violation; refactor
   public void transferTo(Customer targetCustomer, DollarAmount transferAmount) {
-    bankAccount.transferTo(targetCustomer.bankAccount, transferAmount);
+    BankAccount targetAccount = targetCustomer.bankAccount;
+    bankAccount.transferTo(targetAccount, transferAmount);
   }
 
   public boolean matches(CustomerInformation information) {

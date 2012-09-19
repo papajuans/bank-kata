@@ -1,6 +1,5 @@
 package bank.transaction.filter;
 
-import bank.transaction.TransactionHistory;
 import bank.transaction.record.TransactionRecord;
 
 import java.util.Date;
