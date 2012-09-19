@@ -1,6 +1,7 @@
 package bank.transaction.record;
 
 import bank.transaction.TransactionAmounts;
+import bank.transaction.printer.TransactionHistoryPrinter;
 
 public class WithdrawalRecord extends TransactionRecord {
 
@@ -9,13 +10,8 @@ public class WithdrawalRecord extends TransactionRecord {
   }
 
   @Override
-  public boolean isDeposit() {
-    return false;
-  }
-
-  @Override
-  public boolean isWithdrawal() {
-    return true;
+  public void print(TransactionHistoryPrinter printer, StringBuffer buffer) {
+    printer.printToBuffer(this, buffer);
   }
 
   public String toString() {

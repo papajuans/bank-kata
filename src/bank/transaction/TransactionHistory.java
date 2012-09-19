@@ -1,7 +1,7 @@
 package bank.transaction;
 
 import bank.core.DollarAmount;
-import bank.transaction.filter.TransactionRecordFilter;
+import bank.transaction.printer.TransactionHistoryPrinter;
 import bank.transaction.record.DepositRecord;
 import bank.transaction.record.TransactionRecord;
 import bank.transaction.record.WithdrawalRecord;
@@ -28,15 +28,9 @@ public class TransactionHistory {
     records.add(withdrawalRecord);
   }
 
-  public void print(TransactionRecordFilter filter, StringBuffer buffer) {
-    for (TransactionRecord record : records) {
-      conditionallyAddToBuffer(filter, buffer, record);
-    }
-  }
-
-  private void conditionallyAddToBuffer(TransactionRecordFilter filter, StringBuffer buffer, TransactionRecord record) {
-    if (filter.allows(record)) {
-      buffer.append(record);
+  public void print(TransactionHistoryPrinter printer, StringBuffer buffer) {
+    for(TransactionRecord r : records) {
+      r.print(printer, buffer);
     }
   }
 

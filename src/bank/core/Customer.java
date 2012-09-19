@@ -1,6 +1,8 @@
 package bank.core;
 
-import java.util.Date;
+import bank.transaction.printer.AllTransactionPrinter;
+import bank.transaction.printer.DepositsPrinter;
+import bank.transaction.printer.WithdrawalsPrinter;
 
 public class Customer {
   private BankAccount bankAccount;
@@ -20,19 +22,15 @@ public class Customer {
   }
 
   public void printStatement(StringBuffer buffer) {
-    bankAccount.printStatement(buffer);
+    bankAccount.printStatement(new AllTransactionPrinter(), buffer);
   }
 
   public void printDeposits(StringBuffer buffer) {
-    bankAccount.printDeposits(buffer);
+    bankAccount.printStatement(new DepositsPrinter(), buffer);
   }
 
   public void printWithdrawals(StringBuffer buffer) {
-    bankAccount.printWithdrawals(buffer);
-  }
-
-  public void printDateRange(Date start, Date end, StringBuffer buffer) {
-    bankAccount.printDateRange(start, end, buffer);
+    bankAccount.printStatement(new WithdrawalsPrinter(), buffer);
   }
 
   public DollarAmount currentBalance() {
@@ -42,9 +40,5 @@ public class Customer {
   public void transferTo(Customer targetCustomer, DollarAmount transferAmount) {
     BankAccount targetAccount = targetCustomer.bankAccount;
     bankAccount.transferTo(targetAccount, transferAmount);
-  }
-
-  public boolean matches(CustomerInformation information) {
-    return customerInformation.equals(information);
   }
 }

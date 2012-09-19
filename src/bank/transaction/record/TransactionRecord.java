@@ -1,6 +1,7 @@
 package bank.transaction.record;
 
 import bank.transaction.TransactionAmounts;
+import bank.transaction.printer.TransactionHistoryPrinter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,10 +9,9 @@ import java.util.Date;
 public abstract class TransactionRecord {
 
   private TransactionAmounts transactionAmount;
-  private Date transactionDate;
+  private Date transactionDate = new Date();
 
   protected TransactionRecord(TransactionAmounts amounts) {
-    this.transactionDate = new Date();
     this.transactionAmount = amounts;
   }
 
@@ -27,9 +27,7 @@ public abstract class TransactionRecord {
     return transactionDate.after(endDate);
   }
 
-  public abstract boolean isDeposit();
-
-  public abstract boolean isWithdrawal();
+  public abstract void print(TransactionHistoryPrinter printer, StringBuffer buffer);
 
   @Override
   public String toString() {

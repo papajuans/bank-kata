@@ -1,12 +1,7 @@
 package bank.core;
 
 import bank.transaction.TransactionHistory;
-import bank.transaction.filter.DateRangeRecordFilter;
-import bank.transaction.filter.DepositRecordFilter;
-import bank.transaction.filter.NoFilter;
-import bank.transaction.filter.WithdrawalRecordFilter;
-
-import java.util.Date;
+import bank.transaction.printer.TransactionHistoryPrinter;
 
 public class BankAccount {
 
@@ -38,19 +33,8 @@ public class BankAccount {
     return new DollarAmount(currentBalance);
   }
 
-  public void printStatement(StringBuffer buffer) {
-    transactionHistory.print(new NoFilter(), buffer);
+  public void printStatement(TransactionHistoryPrinter printer, StringBuffer buffer) {
+    transactionHistory.print(printer, buffer);
   }
 
-  public void printDeposits(StringBuffer buffer) {
-    transactionHistory.print(new DepositRecordFilter(), buffer);
-  }
-
-  public void printWithdrawals(StringBuffer buffer) {
-    transactionHistory.print(new WithdrawalRecordFilter(), buffer);
-  }
-
-  public void printDateRange(Date start, Date end, StringBuffer buffer) {
-    transactionHistory.print(new DateRangeRecordFilter(start, end), buffer);
-  }
 }
